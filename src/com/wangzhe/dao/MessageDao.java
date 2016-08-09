@@ -21,6 +21,25 @@ import com.wangzhe.db.DbAccess;
  */
 public class MessageDao {
 	/**
+	 * 新增一条数据
+	 * @param message
+	 */
+	public void addOne(Message message){
+		DbAccess dbAccess=new DbAccess();
+		SqlSession sqlSession=null;
+		try {
+			sqlSession=dbAccess.getSqlSession();
+			sqlSession.insert("Message.add", message);
+			sqlSession.commit();
+			System.out.println(message.getId());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			sqlSession.close();
+		}
+	}
+	/**
 	 * 批量删除
 	 * @param id
 	 * @return

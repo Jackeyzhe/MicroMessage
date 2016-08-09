@@ -53,6 +53,10 @@
   </foreach>
   )
   </delete>
+  
+  <insert id="add" parameterType="com.wangzhe.bean.Message" useGeneratedKeys="true" keyProperty="id" >
+  insert into Message(command,description,content) values(#{command},#{description},#{content})
+  </insert>
 
   
 

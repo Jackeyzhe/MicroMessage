@@ -16,6 +16,16 @@
     <servlet-name>DeleteBatchServlet</servlet-name>
     <servlet-class>com.wangzhe.servlet.DeleteBatchServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>ListToAddServlet</servlet-name>
+    <servlet-class>com.wangzhe.servlet.ListToAddServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AddServlet</servlet-name>
+    <servlet-class>com.wangzhe.servlet.AddServlet</servlet-class>
+  </servlet>
+
+
 
 
 
@@ -30,6 +40,14 @@
   <servlet-mapping>
     <servlet-name>DeleteBatchServlet</servlet-name>
     <url-pattern>/servlet/DeleteBatchServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ListToAddServlet</servlet-name>
+    <url-pattern>/servlet/ListToAddServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddServlet</servlet-name>
+    <url-pattern>/servlet/AddServlet</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
