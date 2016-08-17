@@ -3,7 +3,6 @@ package com.wangzhe.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -12,14 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.wangzhe.service.QueryService;
 
 @SuppressWarnings("serial")
-public class ListServlet extends HttpServlet {
-
-	/**
-	 * Constructor of the object.
-	 */
-	public ListServlet() {
-		super();
-	}
+public class AutoReplyServlet extends HttpServlet {
 
 	/**
 	 * The doGet method of the servlet. <br>
@@ -49,24 +41,11 @@ public class ListServlet extends HttpServlet {
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
 
-		response.setContentType("text/html;charset=UTF-8");
-		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("UTF-8");
-		
+		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
-		//接受页面的值
-		String command = request.getParameter("command");
-		String description = request.getParameter("description");
-		//向页面传值
-		request.setAttribute("command", command);
-		request.setAttribute("description", description);
-		//查询消息列表并传给页面
-		QueryService listService = new QueryService();
-		request.setAttribute("messageList", listService.queryMessageList(command, description));
-		//向页面跳转
-		request.getRequestDispatcher("/WEB-INF/jsp/back/list.jsp").forward(request, response);
+		QueryService queryService = new QueryService();
+		out.write(queryService.queryByCommand(request.getParameter("content")));
 		out.flush();
 		out.close();
 	}
